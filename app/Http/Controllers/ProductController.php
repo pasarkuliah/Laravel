@@ -13,19 +13,18 @@ class ProductController extends Controller
     {
         // Ambil semua data produk dari database
         $products = Product::all();
-        
+
 
         // Ambil semua kategori dari database
         $categories = Category::all();
 
         // Kembalikan view dengan data produk dan kategori
         return view('homesuccess', ['products' => $products, 'categories' => $categories]);
-        
     }
 
-    
 
-     /**
+
+    /**
      * Menampilkan produk berdasarkan kategori.
      * 
      * @param int $id ID kategori
@@ -51,12 +50,11 @@ class ProductController extends Controller
     {
         // Ambil input pencarian dari permintaan
         $query = $request->input('query');
-    
+
         // Cari produk berdasarkan nama yang cocok dengan query
         $products = Product::where('name', 'LIKE', '%' . $query . '%')->get();
-    
+
         // Kembalikan hasil pencarian ke view
         return view('search_results', ['products' => $products]);
     }
-
 }

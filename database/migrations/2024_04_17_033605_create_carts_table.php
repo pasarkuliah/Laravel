@@ -13,16 +13,13 @@ return new class extends Migration
     {
         // Buat tabel 'carts'
         Schema::create('carts', function (Blueprint $table) {
-            $table->id(); // Kolom ID otomatis
+            $table->id();
             $table->unsignedBigInteger('user_id'); // Kolom untuk menyimpan ID pengguna
             $table->unsignedBigInteger('product_id'); // Kolom untuk menyimpan ID produk
             $table->integer('quantity')->default(1);  // Kolom untuk menyimpan jumlah produk dalam keranjang, defaultnya 1
             $table->timestamps(); // Kolom untuk timestamp created_at dan updated_at
-
-            // Tambahkan foreign key untuk user_id dan product_id
-            // Constraint untuk user_id, jika pengguna dihapus, hapus juga keranjangnya
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // Constraint untuk product_id, jika produk dihapus, hapus juga dari keranjang
+            $table->foreignId('checkout_id')->nullable()->references('id')->on('checkouts')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

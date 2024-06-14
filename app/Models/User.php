@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-     // menyembunyikan password dan token
+    // menyembunyikan password dan token
     protected $hidden = [
         'password',
         'remember_token',
@@ -47,9 +47,15 @@ class User extends Authenticatable
 
     // Definisi relasi one-to-many ke model Cart
     public function carts()
-{
-    // Relasi 'hasMany' menunjukkan bahwa User dapat memiliki banyak Cart
-    return $this->hasMany(Cart::class);
-}
+    {
+        // Relasi 'hasMany' menunjukkan bahwa User dapat memiliki banyak Cart
+        return $this->hasMany(Cart::class);
+    }
 
+
+    public function wishlist()
+    {
+        // Relasi 'hasMany' menunjukkan bahwa User dapat memiliki banyak Cart
+        return $this->hasMany(Wishlist::class);
+    }
 }

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         // Membuat data produk untuk di masukan kedalam database
         Product::create([
             'name' => 'Seragam Telkom University (Merah - XL)',
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => 4,
         ]);
 
-       
+
         Product::create([
             'name' => 'Seragam Telkom University (Putih - M)',
             'description' => 'Seragam resmi universitas',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => '/images/taliidcard10.jpg',
             'category_id' => 4,
         ]);
-        
+
         Product::create([
             'name' => 'Rak Sepatu (Putih - 3 tingkat)',
             'description' => 'Seragam resmi universitas',
@@ -92,6 +92,5 @@ class DatabaseSeeder extends Seeder
         foreach ($categories as $category) {
             Category::create($category);
         }
-        
     }
 }

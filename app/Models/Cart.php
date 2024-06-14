@@ -8,14 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-    
+
     // Mendefinisikan kolom-kolom yang dapat diisi
-    protected $fillable = ['user_id', 'product_id', 'quantity'];
+    protected $fillable = ['user_id', 'product_id', 'quantity', 'checkout_id'];
 
     // Definisi relasi ke model Product
     public function product()
     {
         // Relasi 'belongsTo' menghubungkan Cart dengan Product berdasarkan foreign key 'product_id'
         return $this->belongsTo(Product::class);
+    }
+
+
+    public function checkout()
+    {
+        return $this->belongsTo(checkout::class, 'checkout_id');
     }
 }

@@ -17,4 +17,10 @@ class checkout extends Model
         'payment_method', // Metode pembayaran yang dipilih
         'total_price' // Total harga pesanan
     ];
+
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
